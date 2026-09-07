@@ -7,6 +7,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 text-sm text-body md:grid-cols-3">
         <div>
           <p className="wordmark text-xl text-heading">peaceflow</p>
+          <span className="mt-2 block h-0.5 w-7 bg-gold" />
           <p className="mt-3">
             {business.address.line1}
             <br />

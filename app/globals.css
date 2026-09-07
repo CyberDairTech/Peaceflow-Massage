@@ -114,6 +114,7 @@ h4 {
 }
 .btn-solid:hover {
   background: var(--heading);
+  box-shadow: 0 0 0 2px var(--gold);
 }
 .btn-line {
   background: transparent;
@@ -123,6 +124,13 @@ h4 {
 .btn-line:hover {
   border-color: var(--gold);
   color: var(--accent);
+}
+.btn-gold {
+  background: var(--gold);
+  color: #2a1b0e;
+}
+.btn-gold:hover {
+  background: var(--accent-2);
 }
 .sub-link {
   font-size: 0.9rem;

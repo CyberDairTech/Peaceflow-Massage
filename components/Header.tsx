@@ -18,7 +18,11 @@ export default function Header() {
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-body md:flex">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-heading">
+            <Link
+              key={link.href}
+              href={link.href}
+              className="border-b border-transparent pb-0.5 hover:border-gold hover:text-heading"
+            >
               {link.label}
             </Link>
           ))}

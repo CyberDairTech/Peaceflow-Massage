@@ -83,7 +83,7 @@ export default function Home() {
       {/* Membership */}
       <section className="border-t border-border-soft bg-linen/40">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid items-center gap-10 md:grid-cols-2">
+          <div className="grid items-center gap-10 border-l-2 border-gold py-1 pl-6 md:grid-cols-2 md:pl-8">
             <div>
               <span className="eyebrow">Membership</span>
               <h2 className="mt-3 text-3xl">
@@ -97,10 +97,7 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <Link
-                href="/contact"
-                className="inline-block rounded-sm bg-heading px-6 py-3 font-semibold text-surface hover:opacity-90"
-              >
+              <Link href="/contact" className="btn btn-gold">
                 Ask about membership
               </Link>
             </div>
