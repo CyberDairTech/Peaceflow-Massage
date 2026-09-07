@@ -1,39 +1,41 @@
 import Link from "next/link";
-import { business, hours, membership, gymPartners, services, cta } from "@/lib/site-data";
+import { business, hours, membership, gymPartners, cta } from "@/lib/site-data";
+import PriceMenu from "@/components/PriceMenu";
 
 export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 pt-20 pb-16">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <div>
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase">
-              {business.address.city}, {business.address.state}
-            </span>
-            <h1 className="mt-3 text-5xl leading-[1.05]">
-              Come as you are.
-              <br />
-              Leave a little lighter.
-            </h1>
-            <p className="mt-6 max-w-md text-lg text-body">
-              I&apos;m Maranda — a licensed massage therapist focused on deep
-              tissue work for people who train hard and need real recovery,
-              not a spa gimmick.
-            </p>
-            <div className="mt-8 flex items-center gap-4">
-              <Link
-                href="/services"
-                className="rounded-sm bg-accent px-6 py-3 font-semibold text-surface hover:opacity-90"
-              >
-                {cta}
-              </Link>
-              <a href={`tel:${business.phone}`} className="text-sm font-semibold text-heading hover:text-accent">
-                {business.phone}
-              </a>
-            </div>
+      <section className="grid md:grid-cols-[1.05fr_1fr]">
+        <div className="flex flex-col justify-center gap-6 px-6 py-16 sm:px-10 md:py-24">
+          <span className="eyebrow">
+            {business.address.city}, {business.address.state}
+          </span>
+          <h1 className="text-5xl leading-[1.06] font-normal sm:text-6xl">
+            Come as you are.
+            <br />
+            Leave a little lighter.
+          </h1>
+          <p className="max-w-[34ch] text-lg text-body">
+            One-on-one deep tissue massage with Maranda Jones — real time set
+            aside for gym-goers who need genuine recovery, not a spa gimmick.
+          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-6">
+            <Link href="/services" className="btn btn-solid">
+              {cta}
+            </Link>
+            <a href="#menu" className="sub-link">
+              See the menu ↓
+            </a>
           </div>
-          <div className="aspect-square rounded-sm border border-border bg-linen" />
+        </div>
+        <div className="texture relative min-h-[300px] md:min-h-[420px]">
+          <span
+            className="mark"
+            style={{ fontSize: "9rem", left: "-6%", top: "32%", transform: "rotate(-4deg)" }}
+          >
+            peaceflow
+          </span>
         </div>
       </section>
 
@@ -71,22 +73,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services teaser */}
-      <section className="mx-auto max-w-6xl px-6 py-16">
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl">Sessions &amp; pricing</h2>
-          <Link href="/services" className="text-sm font-semibold text-accent hover:underline">
-            See all services →
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {services.map((s) => (
-            <div key={s.slug} className="rounded-sm border border-border bg-surface p-6">
-              <h3 className="text-xl">{s.name}</h3>
-              <p className="mt-2 text-sm text-body">{s.description}</p>
-              <p className="mt-4 font-semibold text-heading">${s.price}</p>
-            </div>
-          ))}
+      {/* Pricing menu */}
+      <section className="border-t border-border-soft bg-linen">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+          <PriceMenu />
         </div>
       </section>
 
@@ -95,11 +85,16 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
-              <span className="text-xs font-semibold tracking-widest text-gold uppercase">
-                Membership
-              </span>
-              <h2 className="mt-2 text-3xl">${membership.price}/{membership.cadence}</h2>
+              <span className="eyebrow">Membership</span>
+              <h2 className="mt-3 text-3xl">
+                From ${membership.price}/{membership.cadence}
+              </h2>
               <p className="mt-3 max-w-md text-sm text-body">{membership.description}</p>
+              <p className="mt-2 max-w-md text-xs text-body/70">
+                Plans will eventually be fully build-your-own — pick your
+                services and how many sessions a month, and pricing adjusts
+                from there.
+              </p>
             </div>
             <div>
               <Link
@@ -133,10 +128,7 @@ export default function Home() {
               Booking opens up to two months out, so grab the time that works
               for you.
             </p>
-            <Link
-              href="/services"
-              className="rounded-sm bg-accent px-6 py-3 font-semibold text-surface hover:opacity-90"
-            >
+            <Link href="/services" className="btn btn-solid">
               {cta}
             </Link>
           </div>

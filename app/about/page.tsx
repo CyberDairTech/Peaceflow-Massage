@@ -9,10 +9,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <span className="text-xs font-semibold tracking-widest text-accent uppercase">
-        About
-      </span>
-      <h1 className="mt-2 text-4xl">Hi, I&apos;m Maranda.</h1>
+      <span className="eyebrow">About</span>
+      <h1 className="mt-3 text-4xl">Hi, I&apos;m Maranda.</h1>
       <div className="mt-6 space-y-4 text-body">
         <p>
           I&apos;ve been a licensed massage therapist for three years, and I
@@ -32,10 +30,7 @@ export default function AboutPage() {
           — it&apos;s focused, unhurried recovery work, one client at a time.
         </p>
       </div>
-      <Link
-        href="/services"
-        className="mt-10 inline-block rounded-sm bg-accent px-6 py-3 font-semibold text-surface hover:opacity-90"
-      >
+      <Link href="/services" className="btn btn-solid mt-10">
         {cta}
       </Link>
     </div>

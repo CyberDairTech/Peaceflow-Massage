@@ -16,10 +16,8 @@ export default async function BookPage({
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <span className="text-xs font-semibold tracking-widest text-accent uppercase">
-        Book with Me
-      </span>
-      <h1 className="mt-2 text-4xl">
+      <span className="eyebrow">Book with Me</span>
+      <h1 className="mt-3 text-4xl">
         {service ? service.name : "Request an appointment"}
       </h1>
       {service && (

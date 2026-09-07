@@ -69,3 +69,181 @@ h4 {
   font-weight: 500;
   letter-spacing: -0.01em;
 }
+
+/* ---------- eyebrow label, with a small honey-gold accent rule ---------- */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.eyebrow::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-top: 0.5rem;
+  background: var(--gold);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 1.7rem;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-solid {
+  background: var(--accent);
+  color: #fbf4ea;
+}
+.btn-solid:hover {
+  background: var(--heading);
+}
+.btn-line {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--heading);
+}
+.btn-line:hover {
+  border-color: var(--gold);
+  color: var(--accent);
+}
+.sub-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--accent);
+  border-bottom: 1px solid var(--gold);
+}
+
+/* ---------- hero textured panel ---------- */
+.texture {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(ellipse 70% 55% at 18% 15%, rgba(255, 255, 255, 0.16), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 85% 80%, rgba(0, 0, 0, 0.22), transparent 62%),
+    linear-gradient(155deg, var(--heading) 0%, var(--accent) 58%, var(--accent-2) 100%);
+}
+.texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(48deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-42deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 9px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.texture .mark {
+  position: absolute;
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ---------- pricing menu ---------- */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+.menu-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 2.5rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.menu-row:first-child {
+  border-top: 1px solid var(--border);
+}
+.menu-row .name {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--heading);
+}
+.menu-row .desc {
+  font-size: 0.92rem;
+  color: var(--body);
+  margin-top: 0.35rem;
+  max-width: 40ch;
+}
+.menu-row .info {
+  flex: 1 1 260px;
+}
+.duration-set {
+  display: flex;
+  flex-wrap: wrap;
+}
+.duration-opt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.15rem;
+  text-align: center;
+  text-decoration: none;
+}
+.duration-opt + .duration-opt {
+  border-left: 1px solid var(--border);
+}
+.duration-opt .time {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.duration-opt .price {
+  font-family: var(--font-display), serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-top: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}
+.menu-note {
+  margin-top: 1.6rem;
+  font-size: 0.9rem;
+  color: var(--body);
+}
+@media (max-width: 640px) {
+  .menu-row {
+    flex-direction: column;
+  }
+  .menu-row .info {
+    flex: 1 1 auto;
+  }
+  .duration-set {
+    gap: 0.75rem 0;
+  }
+  .duration-opt {
+    padding: 0 0.9rem 0 0;
+  }
+  .duration-opt + .duration-opt {
+    border-left: none;
+    padding-left: 0.9rem;
+  }
+}

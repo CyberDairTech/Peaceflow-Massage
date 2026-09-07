@@ -22,10 +22,7 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <Link
-          href="/services"
-          className="rounded-sm bg-accent px-5 py-2 text-sm font-semibold text-surface hover:opacity-90"
-        >
+        <Link href="/services" className="btn btn-solid">
           {cta}
         </Link>
       </div>

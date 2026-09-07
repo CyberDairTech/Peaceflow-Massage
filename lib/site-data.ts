@@ -60,6 +60,9 @@ export const membership = {
   cadence: "month",
   description:
     "One massage a month, member pricing on any extra visits, and priority booking in the 2-month window.",
+  // Plans will eventually be build-your-own (choose services + frequency,
+  // price adjusts accordingly) — this is the starting tier while that's built.
+  startingAt: true,
 };
 
 export const gymPartners = [
