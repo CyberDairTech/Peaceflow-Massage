@@ -1,0 +1,41 @@
+import type { Metadata } from "next";
+import { services } from "@/lib/site-data";
+import InquiryForm from "@/components/InquiryForm";
+
+export const metadata: Metadata = {
+  title: "Book with Me | PeaceFlow Massage",
+};
+
+export default async function BookPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string }>;
+}) {
+  const { service: serviceSlug } = await searchParams;
+  const service = services.find((s) => s.slug === serviceSlug);
+
+  return (
+    <div className="mx-auto max-w-2xl px-6 py-16">
+      <span className="text-xs font-semibold tracking-widest text-accent uppercase">
+        Book with Me
+      </span>
+      <h1 className="mt-2 text-4xl">
+        {service ? service.name : "Request an appointment"}
+      </h1>
+      {service && (
+        <p className="mt-2 text-body">
+          {service.durationMinutes} minutes · ${service.price}
+        </p>
+      )}
+      <p className="mt-4 text-sm text-body">
+        Online self-scheduling with instant payment is coming soon. For now,
+        send your preferred time below and I&apos;ll confirm by email or
+        phone — booking is available up to two months out.
+      </p>
+
+      <div className="mt-8">
+        <InquiryForm type="booking_request" service={service} />
+      </div>
+    </div>
+  );
+}
