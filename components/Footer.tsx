@@ -60,8 +60,13 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-border-soft px-6 py-4 text-center text-xs text-body">
-        © {new Date().getFullYear()} {business.name}. All rights reserved.
+      <div className="flex flex-col items-center gap-2 border-t border-border-soft px-6 py-4 text-center text-xs text-body sm:flex-row sm:justify-between">
+        <span>
+          © {new Date().getFullYear()} {business.name}. All rights reserved.
+        </span>
+        <Link href="/admin/login" className="hover:text-heading">
+          Admin Login
+        </Link>
       </div>
     </footer>
   );
