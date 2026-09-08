@@ -69,7 +69,7 @@ export default function Footer() {
         <span>
           © {new Date().getFullYear()} {business.name}. All rights reserved.
         </span>
-        <Link href="/admin/login" className="hover:text-heading">
+        <Link href="/admin/login" className="hover:text-heading sm:mr-14">
           Admin Login
         </Link>
       </div>
