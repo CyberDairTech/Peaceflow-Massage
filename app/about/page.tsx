@@ -6,6 +6,34 @@ export const metadata: Metadata = {
   title: "About | PeaceFlow Massage",
 };
 
+const faqs = [
+  {
+    question: "What should I expect at my first appointment?",
+    answer:
+      "We'll start with a quick conversation about what's feeling tight, any injuries or areas to avoid, and what you want out of the session. From there it's hands-on work in a private room, tailored to you.",
+  },
+  {
+    question: "How far in advance can I book?",
+    answer:
+      "Online booking is open up to two months out. I only take three sessions a day, so times do fill up — especially evenings and weekends.",
+  },
+  {
+    question: "What's your cancellation and no-show policy?",
+    answer:
+      "Life happens, and I get that — just give me as much notice as you can. A first no-show without notice is understood, but a second means you're no longer able to book future sessions with PeaceFlow.",
+  },
+  {
+    question: "Which massage should I get?",
+    answer:
+      "If you're not sure, send me a message with what's going on and I'll point you the right way. Generally: deep tissue for gym-related tightness and chronic tension, therapeutic for a versatile full-body session, and prenatal if you're expecting.",
+  },
+  {
+    question: "Do you offer memberships or discounts?",
+    answer:
+      "Yes — the membership includes a monthly session and member pricing on extra visits (details on the Services page). Lifted Gym members also get $15 off any session.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <div>
@@ -103,7 +131,28 @@ export default function AboutPage() {
               push through and not get what you need out of it.
             </p>
           </div>
-          <Link href="/services" className="btn btn-solid mt-8">
+        </div>
+      </section>
+
+      <section id="faq" className="scroll-mt-20 border-t border-border-soft">
+        <div className="mx-auto max-w-3xl px-6 py-14">
+          <span className="eyebrow">FAQ</span>
+          <h2 className="mt-3 text-2xl sm:text-3xl">Questions I hear a lot</h2>
+          <div className="mt-6">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="faq-item">
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border-soft bg-surface">
+        <div className="mx-auto max-w-3xl px-6 py-14 text-center">
+          <h2 className="text-2xl sm:text-3xl">Ready to book?</h2>
+          <Link href="/services" className="btn btn-solid mt-6 inline-flex">
             {cta}
           </Link>
         </div>

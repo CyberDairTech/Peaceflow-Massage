@@ -57,6 +57,11 @@ export default function Footer() {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/about#faq" className="hover:text-heading">
+                FAQ
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
