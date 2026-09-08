@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 type ServiceRowData = {
   id: string;
   name: string;
+  group_name: string | null;
   duration_minutes: number;
   price_cents: number;
   description: string | null;
@@ -17,6 +18,7 @@ export default function ServiceRow({ service }: { service: ServiceRowData }) {
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [name, setName] = useState(service.name);
+  const [groupName, setGroupName] = useState(service.group_name ?? "");
   const [duration, setDuration] = useState(String(service.duration_minutes));
   const [price, setPrice] = useState(String(service.price_cents / 100));
   const [description, setDescription] = useState(service.description ?? "");
@@ -29,6 +31,7 @@ export default function ServiceRow({ service }: { service: ServiceRowData }) {
       body: JSON.stringify({
         id: service.id,
         name,
+        groupName,
         durationMinutes: Number(duration),
         price: Number(price),
         description,
@@ -65,8 +68,14 @@ export default function ServiceRow({ service }: { service: ServiceRowData }) {
   if (editing) {
     return (
       <tr className="border-t border-border-soft align-top">
-        <td className="px-4 py-3" colSpan={5}>
-          <div className="grid gap-3 sm:grid-cols-4">
+        <td className="px-4 py-3" colSpan={6}>
+          <div className="grid gap-3 sm:grid-cols-5">
+            <input
+              value={groupName}
+              onChange={(e) => setGroupName(e.target.value)}
+              placeholder="Group (e.g. Deep Tissue Massage)"
+              className="rounded-sm border border-border bg-surface px-2 py-1 text-sm sm:col-span-2"
+            />
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -86,7 +95,7 @@ export default function ServiceRow({ service }: { service: ServiceRowData }) {
               placeholder="Price ($)"
               type="number"
               step="0.01"
-              className="rounded-sm border border-border bg-surface px-2 py-1 text-sm"
+              className="rounded-sm border border-border bg-surface px-2 py-1 text-sm sm:col-span-2"
             />
           </div>
           <textarea
@@ -118,6 +127,7 @@ export default function ServiceRow({ service }: { service: ServiceRowData }) {
 
   return (
     <tr className={`border-t border-border-soft ${!service.active ? "opacity-50" : ""}`}>
+      <td className="px-4 py-3 text-body">{service.group_name}</td>
       <td className="px-4 py-3">{service.name}</td>
       <td className="px-4 py-3">{service.duration_minutes} min</td>
       <td className="px-4 py-3">${(service.price_cents / 100).toFixed(2)}</td>

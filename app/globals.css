@@ -63,6 +63,47 @@ h4 {
   text-wrap: balance;
 }
 
+blockquote {
+  margin: 1.8rem 0 1.6rem;
+  padding-left: 1.3rem;
+  border-left: 2px solid var(--accent-2);
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.28rem;
+  color: var(--heading);
+  line-height: 1.45;
+}
+blockquote cite {
+  display: block;
+  margin-top: 0.7rem;
+  font-family: var(--font-body), sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+}
+.value-list {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.value-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  color: var(--body);
+}
+.value-list li::before {
+  content: "—";
+  color: var(--accent-2);
+}
+
 .wordmark {
   font-family: var(--font-display), serif;
   font-style: italic;

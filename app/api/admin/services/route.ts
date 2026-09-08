@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   if (!user) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
   const body = await request.json();
-  const { slug, name, durationMinutes, price, description } = body;
+  const { slug, name, groupName, durationMinutes, price, description } = body;
 
   if (!slug || !name || !durationMinutes || price == null) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -23,6 +23,7 @@ export async function POST(request: Request) {
   const { error } = await supabase.from("services").insert({
     slug,
     name,
+    group_name: groupName || name,
     duration_minutes: durationMinutes,
     price_cents: Math.round(price * 100),
     description: description ?? null,
@@ -37,11 +38,12 @@ export async function PATCH(request: Request) {
   if (!user) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
   const body = await request.json();
-  const { id, name, durationMinutes, price, description, active } = body;
+  const { id, name, groupName, durationMinutes, price, description, active } = body;
   if (!id) return NextResponse.json({ error: "id is required" }, { status: 400 });
 
   const update: Record<string, unknown> = {};
   if (name !== undefined) update.name = name;
+  if (groupName !== undefined) update.group_name = groupName;
   if (durationMinutes !== undefined) update.duration_minutes = durationMinutes;
   if (price !== undefined) update.price_cents = Math.round(price * 100);
   if (description !== undefined) update.description = description;

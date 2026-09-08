@@ -7,6 +7,7 @@ export default async function AdminServicesPage() {
   const { data: services, error } = await supabase
     .from("services")
     .select("*")
+    .order("group_sort", { ascending: true })
     .order("duration_minutes", { ascending: true });
 
   return (
@@ -24,6 +25,7 @@ export default async function AdminServicesPage() {
         <table className="w-full text-left text-sm">
           <thead className="bg-surface text-heading">
             <tr>
+              <th className="px-4 py-3">Group</th>
               <th className="px-4 py-3">Name</th>
               <th className="px-4 py-3">Duration</th>
               <th className="px-4 py-3">Price</th>
@@ -37,7 +39,7 @@ export default async function AdminServicesPage() {
             ))}
             {services?.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-body">
+                <td colSpan={6} className="px-4 py-8 text-center text-body">
                   No services yet.
                 </td>
               </tr>

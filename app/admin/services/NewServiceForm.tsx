@@ -14,6 +14,7 @@ export default function NewServiceForm() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [groupName, setGroupName] = useState("");
   const [name, setName] = useState("");
   const [duration, setDuration] = useState("60");
   const [price, setPrice] = useState("");
@@ -28,6 +29,7 @@ export default function NewServiceForm() {
       body: JSON.stringify({
         slug: `${slugify(name)}-${Date.now().toString(36)}`,
         name,
+        groupName: groupName || name,
         durationMinutes: Number(duration),
         price: Number(price),
         description,
@@ -35,6 +37,7 @@ export default function NewServiceForm() {
     });
     setSaving(false);
     if (res.ok) {
+      setGroupName("");
       setName("");
       setDuration("60");
       setPrice("");
@@ -54,7 +57,13 @@ export default function NewServiceForm() {
 
   return (
     <form onSubmit={handleSubmit} className="rounded-sm border border-border bg-surface p-4">
-      <div className="grid gap-3 sm:grid-cols-4">
+      <div className="grid gap-3 sm:grid-cols-5">
+        <input
+          value={groupName}
+          onChange={(e) => setGroupName(e.target.value)}
+          placeholder="Group (e.g. Deep Tissue Massage)"
+          className="rounded-sm border border-border bg-bg px-2 py-1 text-sm sm:col-span-2"
+        />
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
