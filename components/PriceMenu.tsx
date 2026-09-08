@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { services } from "@/lib/site-data";
+import { getActiveServices } from "@/lib/services";
 
-export default function PriceMenu({ showHeading = true }: { showHeading?: boolean }) {
+export default async function PriceMenu({ showHeading = true }: { showHeading?: boolean }) {
+  const services = await getActiveServices();
+
   return (
     <div id="menu">
       {showHeading && (

@@ -18,42 +18,8 @@ export const hours = [
   { days: "Sunday", time: "1:00pm – 5:00pm", note: "last massage 5:00pm" },
 ];
 
-export type Service = {
-  slug: string;
-  name: string;
-  durationMinutes: number;
-  price: number;
-  description: string;
-};
-
-// Booking system reserves durationMinutes + 10 min buffer per the corrected
-// service-duration mismatch noted in the project scope doc.
-export const services: Service[] = [
-  {
-    slug: "deep-tissue-30",
-    name: "Deep Tissue — 30 Minutes",
-    durationMinutes: 30,
-    price: 55,
-    description:
-      "A focused session on the areas holding the most tension — perfect between workouts or on a tight schedule.",
-  },
-  {
-    slug: "deep-tissue-60",
-    name: "Deep Tissue — 60 Minutes",
-    durationMinutes: 60,
-    price: 95,
-    description:
-      "Our signature full-body deep tissue session, tailored to recovery for gym-goers and everyday tension alike.",
-  },
-  {
-    slug: "deep-tissue-90",
-    name: "Deep Tissue — 90 Minutes",
-    durationMinutes: 90,
-    price: 135,
-    description:
-      "Extended time for a full-body reset — ideal after a heavy training block or when it's been a while.",
-  },
-];
+// Services now live in Supabase (see lib/services.ts) so admin edits show
+// up on the site immediately — see the `Service` type there.
 
 export const membership = {
   price: 105,

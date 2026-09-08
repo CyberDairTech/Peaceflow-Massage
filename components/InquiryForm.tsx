@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Service } from "@/lib/site-data";
+import type { Service } from "@/lib/services";
 
 export default function InquiryForm({
   type,

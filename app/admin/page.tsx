@@ -1,13 +1,13 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server-auth";
-import { services } from "@/lib/site-data";
 import StatusSelect from "./StatusSelect";
 
 export default async function AdminDashboard() {
   const supabase = await createServerSupabaseClient();
-  const { data: inquiries, error } = await supabase
-    .from("inquiries")
-    .select("*")
-    .order("created_at", { ascending: false });
+  const [{ data: inquiries, error }, { data: services }] = await Promise.all([
+    supabase.from("inquiries").select("*").order("created_at", { ascending: false }),
+    supabase.from("services").select("slug,name"),
+  ]);
+  const serviceNameBySlug = new Map((services ?? []).map((s) => [s.slug, s.name]));
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
@@ -34,7 +34,9 @@ export default async function AdminDashboard() {
           </thead>
           <tbody>
             {inquiries?.map((inquiry) => {
-              const service = services.find((s) => s.slug === inquiry.service_slug);
+              const serviceName = inquiry.service_slug
+                ? serviceNameBySlug.get(inquiry.service_slug)
+                : null;
               return (
                 <tr key={inquiry.id} className="border-t border-border-soft align-top">
                   <td className="px-4 py-3 whitespace-nowrap">
@@ -45,7 +47,7 @@ export default async function AdminDashboard() {
                     <div>{inquiry.email}</div>
                     {inquiry.phone && <div className="text-body">{inquiry.phone}</div>}
                   </td>
-                  <td className="px-4 py-3">{service?.name ?? "—"}</td>
+                  <td className="px-4 py-3">{serviceName ?? "—"}</td>
                   <td className="px-4 py-3">
                     {inquiry.preferred_date ?? ""} {inquiry.preferred_time ?? ""}
                   </td>

@@ -1,5 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server-auth";
 import SignOutButton from "./SignOutButton";
+import AdminNav from "./AdminNav";
 
 export default async function AdminLayout({
   children,
@@ -24,6 +25,7 @@ export default async function AdminLayout({
           <SignOutButton />
         </div>
       </div>
+      <AdminNav />
       {children}
     </div>
   );

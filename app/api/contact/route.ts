@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { getResend } from "@/lib/resend";
-import { services } from "@/lib/site-data";
+import { getServiceBySlug } from "@/lib/services";
 
 type ContactBody = {
   type: "contact" | "booking_request";
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const service = services.find((s) => s.slug === body.serviceSlug);
+  const service = body.serviceSlug ? await getServiceBySlug(body.serviceSlug) : null;
   const fromEmail = process.env.EMAIL_FROM;
   const notifyEmail = process.env.NOTIFY_EMAIL;
 
