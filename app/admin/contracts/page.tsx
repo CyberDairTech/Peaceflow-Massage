@@ -53,9 +53,19 @@ export default async function AdminContractsPage() {
                     )}
                   </td>
                   <td className="px-4 py-3">
-                    <Link href={`/admin/contracts/${b.id}`} className="font-semibold text-accent hover:underline">
-                      {contract?.signed_at ? "View" : "Sign"}
-                    </Link>
+                    <div className="flex flex-wrap gap-3">
+                      <Link href={`/admin/contracts/${b.id}`} className="font-semibold text-accent hover:underline">
+                        {contract?.signed_at ? "View" : "Sign"}
+                      </Link>
+                      {contract?.signed_at && (
+                        <a
+                          href={`/api/admin/contracts/${b.id}/pdf`}
+                          className="hover:underline"
+                        >
+                          PDF
+                        </a>
+                      )}
+                    </div>
                   </td>
                 </tr>
               );

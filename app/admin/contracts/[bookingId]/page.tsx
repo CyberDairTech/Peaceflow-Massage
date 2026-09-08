@@ -1,5 +1,5 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server-auth";
-import { contractPolicyParagraphs } from "@/lib/contract";
+import { contractTitle, cancellationNoShowPolicy, contractAcknowledgement } from "@/lib/contract";
 import SignForm from "./SignForm";
 
 export default async function AdminContractPage({
@@ -29,7 +29,7 @@ export default async function AdminContractPage({
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-10">
-      <h1 className="text-3xl">Session Agreement</h1>
+      <h1 className="text-3xl">{contractTitle}</h1>
       <p className="mt-2 text-sm text-body">
         {booking.clients?.name} · {booking.services?.name} ·{" "}
         {new Date(booking.start_time).toLocaleString()}
@@ -40,24 +40,40 @@ export default async function AdminContractPage({
           : "Receipt: amount not recorded"}
       </p>
 
-      <div className="mt-6 space-y-3 rounded-sm border border-border bg-linen/40 p-6 text-sm text-body">
-        {contractPolicyParagraphs.map((p, i) => (
-          <p key={i} className={i === 0 ? "font-semibold text-heading" : ""}>
-            {p}
-          </p>
+      <div className="relative mt-6 space-y-3 rounded-sm border border-border bg-linen/40 p-6 pb-10 text-sm text-body">
+        <p className="font-semibold text-heading">Cancellation &amp; No-Show Policy</p>
+        {cancellationNoShowPolicy.map((p, i) => (
+          <p key={i}>{p}</p>
         ))}
+        <p
+          className="wordmark absolute bottom-3 right-6 text-lg text-heading"
+          style={{ fontStyle: "italic" }}
+        >
+          {contract?.initials ? `Initialed: ${contract.initials}` : "Initials: ______"}
+        </p>
       </div>
+
+      <p className="mt-4 text-xs text-body">{contractAcknowledgement}</p>
 
       {contract?.signed_at ? (
         <div className="mt-6 rounded-sm border border-gold bg-surface p-6">
           <p className="font-semibold text-heading">Signed</p>
-          <p className="mt-1 text-sm text-body">
-            {contract.signer_name} (initials: {contract.initials}) —{" "}
-            {new Date(contract.signed_at).toLocaleString()}
+          <p
+            className="wordmark mt-3 text-2xl text-heading"
+            style={{ fontStyle: "italic" }}
+          >
+            {contract.signer_name}
           </p>
-          <p className="mt-1 text-xs text-body">
-            A copy was emailed to {contract.signer_email}.
+          <p className="mt-2 text-sm text-body">
+            {contract.signer_name} — {new Date(contract.signed_at).toLocaleString()}
           </p>
+          <p className="mt-1 text-xs text-body">A copy was emailed to {contract.signer_email}.</p>
+          <a
+            href={`/api/admin/contracts/${bookingId}/pdf`}
+            className="btn btn-line mt-4 inline-flex"
+          >
+            Download PDF
+          </a>
         </div>
       ) : (
         <SignForm
