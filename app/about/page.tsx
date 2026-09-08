@@ -37,34 +37,45 @@ const faqs = [
 export default function AboutPage() {
   return (
     <div>
-      <section className="mx-auto max-w-3xl px-6 py-16">
-        <span className="eyebrow">About</span>
-        <h1 className="mt-3 text-4xl sm:text-5xl">Hi, I&apos;m Maranda.</h1>
-        <div className="mt-6 space-y-4 text-body">
-          <p>
-            I&apos;m a licensed massage therapist, and I opened PeaceFlow
-            Massage right here in downtown Grand Junction to do one thing
-            well: hands-on, unhurried bodywork that actually helps.
-          </p>
-          <p>
-            I keep my practice small on purpose — a maximum of three bookings
-            a day — so every session gets my full attention instead of being
-            squeezed into an assembly line. No back-to-back rooms, no rushing
-            out the door. Just one table, one client, for the whole hour.
-          </p>
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <div className="about-grid">
+          <div
+            className="about-visual flex items-center justify-center border border-dashed border-border bg-linen/50"
+            aria-hidden="true"
+          >
+            <span className="text-sm text-body">Photo coming soon</span>
+          </div>
+          <div>
+            <span className="eyebrow">About</span>
+            <h1 className="mt-3 text-4xl sm:text-5xl">Hi, I&apos;m Maranda.</h1>
+            <div className="mt-6 space-y-4 text-body">
+              <p>
+                I&apos;m a licensed massage therapist, and I opened PeaceFlow
+                Massage right here in downtown Grand Junction to do one thing
+                well: hands-on, unhurried bodywork that actually helps.
+              </p>
+              <p>
+                I keep my practice small on purpose — a maximum of three
+                bookings a day — so every session gets my full attention
+                instead of being squeezed into an assembly line. No
+                back-to-back rooms, no rushing out the door. Just one table,
+                one client, for the whole hour.
+              </p>
+            </div>
+
+            <blockquote>
+              I want every person who gets on my table to feel like I
+              actually have time for them — because I do.
+              <cite>Maranda Jones, LMT</cite>
+            </blockquote>
+
+            <ul className="value-list">
+              <li>Licensed &amp; insured, three years in practice</li>
+              <li>One client at a time — no double-booking, ever</li>
+              <li>Based in downtown Grand Junction</li>
+            </ul>
+          </div>
         </div>
-
-        <blockquote>
-          I want every person who gets on my table to feel like I actually
-          have time for them — because I do.
-          <cite>Maranda Jones, LMT</cite>
-        </blockquote>
-
-        <ul className="value-list">
-          <li>Licensed &amp; insured, three years in practice</li>
-          <li>One client at a time — no double-booking, ever</li>
-          <li>Based in downtown Grand Junction</li>
-        </ul>
       </section>
 
       <section className="border-t border-border-soft bg-surface">
