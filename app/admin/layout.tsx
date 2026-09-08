@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createServerSupabaseClient } from "@/lib/supabase/server-auth";
 import SignOutButton from "./SignOutButton";
 import AdminNav from "./AdminNav";
@@ -22,6 +23,9 @@ export default async function AdminLayout({
         <span className="wordmark text-lg text-heading">peaceflow admin</span>
         <div className="flex items-center gap-4 text-sm text-body">
           <span>{user.email}</span>
+          <Link href="/admin/settings" className="hover:text-heading">
+            Settings
+          </Link>
           <SignOutButton />
         </div>
       </div>
