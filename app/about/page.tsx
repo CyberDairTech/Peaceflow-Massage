@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { cta } from "@/lib/site-data";
 import { treatmentIcons } from "@/components/treatmentIcons";
+import { pageMetadata } from "@/lib/seo";
 
 const whoIWorkWith = [
   {
@@ -21,9 +21,12 @@ const whoIWorkWith = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "About | PeaceFlow Massage",
-};
+export const metadata = pageMetadata({
+  title: "About Maranda",
+  description:
+    "Meet Maranda Jones, licensed massage therapist and owner of PeaceFlow Massage in Grand Junction, CO — her story, who she works with, and answers to common questions.",
+  path: "/about",
+});
 
 const faqs = [
   {

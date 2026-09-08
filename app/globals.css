@@ -6,9 +6,12 @@
   --linen: #e8dbc7;
   --linen-2: #decbae;
   --heading: #4a2f1f;
-  --body: #5c4630;
+  --body: #4a3826;
   --accent: #8b5e3c;
   --accent-2: #c79a6e;
+  /* Darker than --accent specifically for small text — --accent/--accent-2
+     don't meet WCAG AA contrast as text color on --bg/--linen. */
+  --accent-text: #6b4a2c;
   --gold: #cda434;
   --border: rgba(74, 47, 31, 0.16);
   --border-soft: rgba(74, 47, 31, 0.09);
@@ -26,6 +29,7 @@
   --color-body: var(--body);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
+  --color-accent-text: var(--accent-text);
   --color-gold: var(--gold);
   --color-border: var(--border);
   --color-border-soft: var(--border-soft);
@@ -43,6 +47,7 @@
     --body: #d9c6ae;
     --accent: #c79a6e;
     --accent-2: #8b5e3c;
+    --accent-text: #d9ae7e;
     --gold: #e0bb52;
     --border: rgba(243, 233, 218, 0.16);
     --border-soft: rgba(243, 233, 218, 0.09);
@@ -85,7 +90,7 @@ blockquote cite {
   font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.03em;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .value-list {
   list-style: none;
@@ -104,7 +109,7 @@ blockquote cite {
 }
 .value-list li::before {
   content: "—";
-  color: var(--accent-2);
+  color: var(--accent-text);
 }
 
 .wordmark {
@@ -122,7 +127,7 @@ blockquote cite {
   font-size: 0.76rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .eyebrow::after {
   content: "";
@@ -167,7 +172,7 @@ blockquote cite {
 }
 .btn-line:hover {
   border-color: var(--gold);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .btn-gold {
   background: var(--gold);
@@ -187,7 +192,7 @@ blockquote cite {
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--accent);
+  color: var(--accent-text);
   border-bottom: 1px solid var(--gold);
 }
 
@@ -272,7 +277,7 @@ blockquote cite {
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   white-space: nowrap;
 }
 .duration-opt .price {
@@ -377,7 +382,7 @@ blockquote cite {
   font-family: var(--font-display), serif;
   font-style: italic;
   font-size: 1.1rem;
-  color: var(--accent-2);
+  color: var(--accent-text);
   display: block;
   margin-bottom: 0.7rem;
 }
@@ -423,7 +428,7 @@ blockquote cite {
   font-size: 0.82rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-top: 0.35rem;
   display: block;
 }
@@ -445,6 +450,47 @@ blockquote cite {
   color: var(--on-dark-body);
   max-width: 44ch;
   margin: 0 auto 2rem;
+}
+
+/* ---------- blog index ---------- */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.blog-card {
+  display: block;
+  padding: 22px 24px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.blog-card:hover {
+  background: var(--linen);
+}
+.blog-card .pillar {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+.blog-card h2 {
+  margin-top: 8px;
+  font-size: 1.15rem;
+}
+.blog-card p {
+  margin-top: 8px;
+  font-size: 0.86rem;
+  color: var(--body);
+}
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- FAQ ---------- */
@@ -472,7 +518,7 @@ blockquote cite {
 .faq-item summary::after {
   content: "+";
   font-family: var(--font-body), sans-serif;
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 1.3rem;
   line-height: 1;
   flex: none;

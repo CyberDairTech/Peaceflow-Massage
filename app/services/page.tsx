@@ -1,13 +1,16 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { gymPartners, cta } from "@/lib/site-data";
 import PriceMenu from "@/components/PriceMenu";
 import SignatureTreatments from "@/components/SignatureTreatments";
 import MembershipBanner from "@/components/MembershipBanner";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services & Pricing | PeaceFlow Massage",
-};
+export const metadata = pageMetadata({
+  title: "Services & Pricing",
+  description:
+    "Deep tissue, therapeutic, and prenatal massage pricing in Grand Junction, CO — pick a massage type and session length, then book online.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

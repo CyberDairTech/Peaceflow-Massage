@@ -45,6 +45,27 @@ export default function InquiryForm({
           Maranda will reach out shortly to confirm
           {service ? ` your ${service.name.toLowerCase()} session` : ""}.
         </p>
+        {type === "booking_request" && (
+          <div className="mt-4 space-y-2 border-t border-border-soft pt-4 text-sm">
+            <p>
+              <span className="font-semibold text-heading">Getting here:</span>{" "}
+              336 Main St, Suite 218, Grand Junction — Suite 218 is upstairs,
+              look for the building directory near the entrance. Street
+              parking is available along Main St.
+            </p>
+            <p>
+              <span className="font-semibold text-heading">Before you arrive:</span>{" "}
+              wear something easy to change out of, and eat a light meal
+              rather than a heavy one if you're coming right after a meal.
+            </p>
+            <p>
+              <span className="font-semibold text-heading">Policy reminder:</span>{" "}
+              please give as much notice as you can if you need to
+              reschedule — a first no-show is understood, a second means
+              you're no longer able to book future sessions with PeaceFlow.
+            </p>
+          </div>
+        )}
       </div>
     );
   }

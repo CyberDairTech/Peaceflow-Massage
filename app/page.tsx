@@ -1,8 +1,30 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { business, cta } from "@/lib/site-data";
 import PriceMenu from "@/components/PriceMenu";
 import SignatureTreatments from "@/components/SignatureTreatments";
 import MembershipBanner from "@/components/MembershipBanner";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "PeaceFlow Massage | Grand Junction, CO",
+  },
+  description:
+    "One-on-one deep tissue, therapeutic, and prenatal massage in Grand Junction, CO with licensed massage therapist Maranda Jones. Book online, up to two months out.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "PeaceFlow Massage | Grand Junction, CO",
+    description:
+      "One-on-one deep tissue, therapeutic, and prenatal massage in Grand Junction, CO with licensed massage therapist Maranda Jones.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PeaceFlow Massage | Grand Junction, CO",
+    description:
+      "One-on-one deep tissue, therapeutic, and prenatal massage in Grand Junction, CO with licensed massage therapist Maranda Jones.",
+  },
+};
 
 export default function Home() {
   return (

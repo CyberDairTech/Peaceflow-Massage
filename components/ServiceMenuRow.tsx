@@ -18,6 +18,7 @@ export default function ServiceMenuRow({ group }: { group: { groupName: string; 
         <select
           value={selectedSlug}
           onChange={(e) => setSelectedSlug(e.target.value)}
+          aria-label={`${group.groupName} duration`}
           className="rounded-sm border border-border bg-surface px-3 py-2 text-sm"
         >
           {group.services.map((s) => (
@@ -26,7 +27,7 @@ export default function ServiceMenuRow({ group }: { group: { groupName: string; 
             </option>
           ))}
         </select>
-        <Link href={`/book?service=${selected.slug}`} className="btn btn-solid">
+        <Link href={`/book/${selected.slug}`} className="btn btn-solid">
           Book This Service
         </Link>
       </div>

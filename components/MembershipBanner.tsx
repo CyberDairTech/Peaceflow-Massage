@@ -10,7 +10,7 @@ export default function MembershipBanner() {
           From ${membership.price}/{membership.cadence}
         </h2>
         <p className="mt-3 max-w-md text-sm text-body">{membership.description}</p>
-        <p className="mt-2 max-w-md text-xs text-body/70">
+        <p className="mt-2 max-w-md text-xs text-body">
           Plans will eventually be fully build-your-own — pick your services
           and how many sessions a month, and pricing adjusts from there.
         </p>
