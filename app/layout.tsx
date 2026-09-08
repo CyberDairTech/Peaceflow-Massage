@@ -16,7 +16,7 @@ const karla = Karla({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = process.env.SITE_URL ?? "http://localhost:3000";
 const defaultDescription =
   "Deep tissue, therapeutic, and prenatal massage in Grand Junction, CO. Book one-on-one sessions with licensed massage therapist Maranda Jones.";
 
